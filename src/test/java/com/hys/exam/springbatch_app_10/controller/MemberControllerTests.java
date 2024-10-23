@@ -1,7 +1,7 @@
 package com.hys.exam.springbatch_app_10.controller;
 
 import com.hys.exam.springbatch_app_10.app.member.controller.MemberController;
-import com.hys.exam.springbatch_app_10.app.member.MemberService;
+import com.hys.exam.springbatch_app_10.app.member.service.MemberService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package com.hys.exam.springbatch_app_10.app.member.controller;
 
 import com.hys.exam.springbatch_app_10.app.member.form.JoinForm;
-import com.hys.exam.springbatch_app_10.app.member.MemberService;
+import com.hys.exam.springbatch_app_10.app.member.service.MemberService;
 import com.hys.exam.springbatch_app_10.util.Ut;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;

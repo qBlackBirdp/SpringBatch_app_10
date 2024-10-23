@@ -1,4 +1,4 @@
-package com.hys.exam.springbatch_app_10.app.member;
+package com.hys.exam.springbatch_app_10.app.member.service;
 
 import com.hys.exam.springbatch_app_10.app.member.entity.Member;
 import com.hys.exam.springbatch_app_10.app.member.exception.AlreadyJoinException;
