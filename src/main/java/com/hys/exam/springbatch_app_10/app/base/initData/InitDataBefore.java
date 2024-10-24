@@ -4,13 +4,32 @@ import com.hys.exam.springbatch_app_10.app.cart.entity.CartItem;
 import com.hys.exam.springbatch_app_10.app.cart.service.CartService;
 import com.hys.exam.springbatch_app_10.app.member.service.MemberService;
 import com.hys.exam.springbatch_app_10.app.member.entity.Member;
+import com.hys.exam.springbatch_app_10.app.order.entity.Order;
+import com.hys.exam.springbatch_app_10.app.order.service.OrderService;
 import com.hys.exam.springbatch_app_10.app.product.entity.Product;
 import com.hys.exam.springbatch_app_10.app.product.service.ProductService;
 import com.hys.exam.springbatch_app_10.app.song.entity.Song;
 import com.hys.exam.springbatch_app_10.app.song.service.SongService;
 
+import java.util.List;
+
 public interface InitDataBefore {
-    default void before(MemberService memberService, SongService songService, ProductService productService, CartService cartService) {
+    default void before(
+            MemberService memberService,
+            SongService songService,
+            ProductService productService,
+            CartService cartService,
+            OrderService orderService) {
+        class Helper {
+            public Order order(Member member, List<Product> products) {
+                for (int i = 0; i < products.size(); i++) {
+                    Product product = products.get(i);
+                    cartService.addItem(member, product);
+                }
+                return orderService.createFromCart(member);
+            }
+        }
+        Helper helper = new Helper();
         Member member1 = memberService.join("user1", "1234", "user1@test.com");
         Member member2 = memberService.join("user2", "1234", "user2@test.com");
 

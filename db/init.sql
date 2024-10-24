@@ -13,3 +13,8 @@ USE SpringBatch_app_10__test;
 SHOW TABLES;
 
 SELECT * FROM `member`;
+SELECT * FROM `song`;
+SELECT * FROM `product`;
+SELECT * FROM `cart_item`;
+SELECT * FROM `cash_log`;
+SELECT * FROM `order_item`;
