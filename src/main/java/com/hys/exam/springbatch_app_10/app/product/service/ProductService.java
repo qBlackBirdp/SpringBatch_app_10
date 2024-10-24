@@ -1,5 +1,6 @@
 package com.hys.exam.springbatch_app_10.app.product.service;
 
+
 import com.hys.exam.springbatch_app_10.app.product.entity.Product;
 import com.hys.exam.springbatch_app_10.app.product.repository.ProductRepository;
 import com.hys.exam.springbatch_app_10.app.song.entity.Song;
@@ -14,6 +15,7 @@ import java.util.Optional;
 @Transactional(readOnly = true)
 public class ProductService {
     private final ProductRepository productRepository;
+
     @Transactional
     public Product create(Song song, String title, int price) {
         Product product = Product.builder()
@@ -22,16 +24,23 @@ public class ProductService {
                 .author(song.getAuthor())
                 .price(price)
                 .build();
+
         productRepository.save(product);
+
         return product;
     }
+
     @Transactional
     public void modify(Product product, String newTitle, int newPrice) {
         product.setTitle(newTitle);
         product.setPrice(newPrice);
+
         productRepository.save(product);
     }
+
     public Optional<Product> findById(long id) {
         return productRepository.findById(id);
     }
+
+
 }

@@ -1,6 +1,7 @@
 package com.hys.exam.springbatch_app_10.app.security.service;
 
 import com.hys.exam.springbatch_app_10.app.member.entity.Member;
+
 import com.hys.exam.springbatch_app_10.app.member.repository.MemberRepository;
 import com.hys.exam.springbatch_app_10.app.security.dto.MemberContext;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +23,7 @@ public class CustomUserDetailsService implements UserDetailsService { // 사용�
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Member member = memberRepository.findByUsername(username).get();
-        List<GrantedAuthority> authorities = new ArrayList<>();
+        List<GrantedAuthority> authorities = new ArrayList<>(); 
         authorities.add(new SimpleGrantedAuthority("MEMBER")); // MEMBER 권한을 부여/ 권한 객체는 SimpleGrantedAuthority
         return new MemberContext(member, authorities);
     }

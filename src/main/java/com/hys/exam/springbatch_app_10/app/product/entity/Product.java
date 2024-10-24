@@ -30,12 +30,15 @@ public class Product extends BaseEntity {
     public Product(long id) {
         super(id);
     }
+
     public int getSalePrice() {
         return getPrice();
     }
+
     public int getWholesalePrice() {
         return (int) Math.ceil(getPrice() * 0.7);
     }
+
     public boolean isOrderable() {
         return true;
     }

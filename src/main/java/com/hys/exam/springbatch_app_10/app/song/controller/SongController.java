@@ -1,6 +1,7 @@
 package com.hys.exam.springbatch_app_10.app.song.controller;
 
 import com.hys.exam.springbatch_app_10.app.member.entity.Member;
+
 import com.hys.exam.springbatch_app_10.app.security.dto.MemberContext;
 import com.hys.exam.springbatch_app_10.app.song.entity.Song;
 import com.hys.exam.springbatch_app_10.app.song.exception.ActorCanNotModifyException;
@@ -29,12 +30,12 @@ public class SongController {
     private final SongService songService;
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/create")
-    public String showWrite() {
+    public String showCreate() {
         return "song/create";
     }
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/create")
-    public String write(@AuthenticationPrincipal MemberContext memberContext, @Valid SongForm songForm) {
+    public String create(@AuthenticationPrincipal MemberContext memberContext, @Valid SongForm songForm) {
         Member author = memberContext.getMember();
         Song song = songService.create(author, songForm.getSubject(), songForm.getContent());
         return "redirect:/song/" + song.getId() + "?msg=" + Ut.url.encode("%d번 음원이 생성되었습니다.".formatted(song.getId()));

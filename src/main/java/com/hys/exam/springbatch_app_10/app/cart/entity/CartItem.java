@@ -1,5 +1,6 @@
 package com.hys.exam.springbatch_app_10.app.cart.entity;
 
+
 import com.hys.exam.springbatch_app_10.app.base.entity.BaseEntity;
 import com.hys.exam.springbatch_app_10.app.member.entity.Member;
 import com.hys.exam.springbatch_app_10.app.product.entity.Product;

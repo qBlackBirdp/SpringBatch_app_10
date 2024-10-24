@@ -1,5 +1,6 @@
 package com.hys.exam.springbatch_app_10.app.order.entity;
 
+
 import com.hys.exam.springbatch_app_10.app.base.entity.BaseEntity;
 import com.hys.exam.springbatch_app_10.app.member.entity.Member;
 import lombok.*;
@@ -60,5 +61,16 @@ public class Order extends BaseEntity {
             payPrice += orderItem.getSalePrice();
         }
         return payPrice;
+    }
+
+    public String getName() {
+        String name = orderItems.get(0).getProduct().getTitle();
+
+        if (orderItems.size() > 1) {
+            name += " 외 %d곡".formatted(orderItems.size() - 1);
+        }
+
+        return name;
+
     }
 }
