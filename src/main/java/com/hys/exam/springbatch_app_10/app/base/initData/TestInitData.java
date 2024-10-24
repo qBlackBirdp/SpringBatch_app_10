@@ -1,5 +1,6 @@
 package com.hys.exam.springbatch_app_10.app.base.initData;
 
+import com.hys.exam.springbatch_app_10.app.cart.service.CartService;
 import com.hys.exam.springbatch_app_10.app.member.service.MemberService;
 import com.hys.exam.springbatch_app_10.app.product.service.ProductService;
 import com.hys.exam.springbatch_app_10.app.song.service.SongService;
@@ -12,9 +13,9 @@ import org.springframework.context.annotation.Profile;
 @Profile("test")
 public class TestInitData implements InitDataBefore {
     @Bean
-    CommandLineRunner initData(MemberService memberService, SongService songService, ProductService productService) {
+    CommandLineRunner initData(MemberService memberService, SongService songService, ProductService productService, CartService cartService) {
         return args -> {
-            before(memberService, songService, productService);
+            before(memberService, songService, productService, cartService);
         };
     }
 }

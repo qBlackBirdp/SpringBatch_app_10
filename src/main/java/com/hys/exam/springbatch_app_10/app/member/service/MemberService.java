@@ -1,5 +1,7 @@
 package com.hys.exam.springbatch_app_10.app.member.service;
 
+import com.hys.exam.springbatch_app_10.app.cash.entity.CashLog;
+import com.hys.exam.springbatch_app_10.app.cash.service.CashService;
 import com.hys.exam.springbatch_app_10.app.member.entity.Member;
 import com.hys.exam.springbatch_app_10.app.member.exception.AlreadyJoinException;
 import com.hys.exam.springbatch_app_10.app.member.repository.MemberRepository;
@@ -16,6 +18,7 @@ import java.util.Optional;
 public class MemberService {
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+    private final CashService cashService;
 
     public Member join(String username, String password, String email) {
         if (memberRepository.findByUsername(username).isPresent()) {
@@ -33,5 +36,13 @@ public class MemberService {
     @Transactional(readOnly = true)
     public Optional<Member> findByUsername(String username) {
         return memberRepository.findByUsername(username);
+    }
+
+    public long addCash(Member member, long price, String eventType) {
+        CashLog cashLog = cashService.addCash(member, price, eventType);
+        long newRestCash = member.getRestCash() + cashLog.getPrice();
+        member.setRestCash(newRestCash);
+        memberRepository.save(member);
+        return newRestCash;
     }
 }
