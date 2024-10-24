@@ -1,4 +1,4 @@
-package com.hys.exam.springbatch_app_10.app.member.security.dto;
+package com.hys.exam.springbatch_app_10.app.security.dto;
 
 import com.hys.exam.springbatch_app_10.app.member.entity.Member;
 import lombok.Getter;

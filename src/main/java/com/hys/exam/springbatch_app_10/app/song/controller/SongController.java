@@ -1,7 +1,7 @@
 package com.hys.exam.springbatch_app_10.app.song.controller;
 
 import com.hys.exam.springbatch_app_10.app.member.entity.Member;
-import com.hys.exam.springbatch_app_10.app.member.security.dto.MemberContext;
+import com.hys.exam.springbatch_app_10.app.security.dto.MemberContext;
 import com.hys.exam.springbatch_app_10.app.song.entity.Song;
 import com.hys.exam.springbatch_app_10.app.song.exception.ActorCanNotModifyException;
 import com.hys.exam.springbatch_app_10.app.song.exception.ActorCanNotSeeException;
